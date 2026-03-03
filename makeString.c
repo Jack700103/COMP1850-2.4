@@ -1,17 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 
+/*
+ * makeString.c - Command line argument concatenator
+ * Author: Guanjie Chen
+ * Student ID: 201860766
+ */
+
 int main(int argc, char *argv[]) {
-    if(argc < 2 || argc > 11) {
+    if((argc < 2) || (argc > 11)) {
         printf("Error: Requires 1-10 arguments\n");
         return 1;
     }
     
-    char buffer[200] = "";
+    char buffer[200] = ""; 
     int valid = 1;
     
     for(int i=1; i<argc; i++) {
-        if(strlen(argv[i]) < 1 || strlen(argv[i]) > 4) {
+        if((strlen(argv[i]) < 1) || (strlen(argv[i]) > 4)) {
             valid = 0;
             break;
         }
@@ -24,7 +30,9 @@ int main(int argc, char *argv[]) {
     
     for(int i=1; i<argc; i++) {
         strcat(buffer, argv[i]);
-        if(i < argc-1) strcat(buffer, "-");
+        if(i < argc-1) {
+            strcat(buffer, "-");
+        }
     }
     
     printf("%s\n", buffer);
